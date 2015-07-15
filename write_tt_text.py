@@ -1,8 +1,12 @@
 # image is whole capture image webcam from openCV
-
+# Thai char from fill form and Database are in form of UTF-8 already
+# upside and downside char of Thai can not be display with double space in to bottom line
 def write_tt_text(image,x,y,text):
-    win_text=text.decode('UTF-8')
-    win_text=win_text+unichr(0x0020)+unichr(0x0020)
+    try:
+        win_text=text.decode('UTF-8')
+        win_text=win_text+unichr(0x0020)+unichr(0x0020)
+    except:
+        win_text=text+'  '
     Font1 = ImageFont.truetype("angsau_0.ttf", 14)
     image_pil = Image.new("RGB",(150,26),(0,0,0))
     draw = ImageDraw.Draw(image_pil)
